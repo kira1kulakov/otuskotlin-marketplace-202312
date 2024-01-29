@@ -10,6 +10,7 @@
 
 1. [m1l1-first](./m1l1-first) - Вводное занятие, создание первой программы на Kotlin
 2. [m1l2-basic](./m1l2-basis) - Основные конструкции Kotlin
-2. [m1l3-func](./m1l3-functions-collections) - Функциональные элементы Kotlin и коллекции
+3. [m1l3-func](./m1l3-functions-collections) - Функциональные элементы Kotlin и коллекции
+4. [m1l4-oop](./m1l4-oop) - Объектно-ориентированное программирование
 
 
