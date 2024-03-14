@@ -1,4 +1,4 @@
-package ru.otus.otuskotlin.marketplace.plugin
+package ru.otus.otuskotlin.social.moodnow.plugin
 
 import org.gradle.accessors.dm.LibrariesForLibs
 import org.gradle.api.Plugin
@@ -39,7 +39,6 @@ private fun KotlinMultiplatformExtension.configureTargets(project: Project) {
     targets {
         jvmToolchain {
             languageVersion.set(JavaLanguageVersion.of(libs.versions.jvm.language.get()))
-//            vendor.set(JvmVendorSpec.AZUL)
         }
 
         jvm {
