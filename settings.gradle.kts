@@ -10,5 +10,4 @@ plugins {
 }
 rootProject.name = "otuskotlin-marketplace-202312"
 
-includeBuild("lessons")
 includeBuild("social-moodnow-be")

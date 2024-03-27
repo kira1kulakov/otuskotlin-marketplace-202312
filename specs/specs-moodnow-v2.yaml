@@ -1,0 +1,272 @@
+openapi: 3.0.3
+info:
+  title: "Social networking service 'MoodNow' ${VERSION_APP}"
+  description: Social networking service, where you can share your mood with friends and subscribers
+  version: 1.0.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - url: http://localhost:8080/v2
+
+tags:
+  - name: Chatters Api
+    description: Взаимодействия с сообщениями
+
+paths:
+  /chatter/create:
+    post:
+      tags:
+        - Chatters Api
+      summary: Create chatter
+      operationId: chatterCreate
+      requestBody:
+        description: Request body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatterCreateRequest'
+        required: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatterCreateResponse'
+  /chatter/read:
+    post:
+      tags:
+        - Chatters Api
+      summary: Read chatter
+      operationId: chatterRead
+      requestBody:
+        description: Request body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatterReadRequest'
+        required: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatterReadResponse'
+  /chatter/update:
+    post:
+      tags:
+        - Chatters Api
+      summary: Update chatter
+      operationId: chatterUpdate
+      requestBody:
+        description: Request body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatterUpdateRequest'
+        required: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatterUpdateResponse'
+  /chatter/delete:
+    post:
+      tags:
+        - Chatters Api
+      summary: Delete chatter
+      operationId: chatterDelete
+      requestBody:
+        description: Request body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatterDeleteRequest'
+        required: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatterDeleteResponse'
+
+
+components:
+  schemas:
+
+    IChatterRequest:
+      type: object
+      description: Базовый интерфейс работы с сообщениями
+      properties:
+        requestType:
+          type: string
+          description: Поле-дескриминатор для вычисления типа запроса
+          example: create
+      discriminator:
+        propertyName: requestType
+        mapping:
+          create: '#/components/schemas/ChatterCreateRequest'
+          read: '#/components/schemas/ChatterReadRequest'
+          update: '#/components/schemas/ChatterUpdateRequest'
+          delete: '#/components/schemas/ChatterDeleteRequest'
+
+    IChatterResponse:
+      type: object
+      description: Базовый интерфейс для всех ответов
+      properties:
+        responseType:
+          type: string
+          description: Поле-дескриминатор для вычисления типа запроса
+          example: create
+        result:
+          $ref: '#/components/schemas/ResponseResult'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+      discriminator:
+        propertyName: responseType
+        mapping:
+          create: '#/components/schemas/ChatterCreateResponse'
+          read: '#/components/schemas/ChatterReadResponse'
+          update: '#/components/schemas/ChatterUpdateResponse'
+          delete: '#/components/schemas/ChatterDeleteResponse'
+
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        group:
+          type: string
+        field:
+          type: string
+        message:
+          type: string
+
+    ResponseResult:
+      type: string
+      enum:
+        - success
+        - error
+
+    ChatterCreateRequest:
+      allOf:
+        - $ref: '#/components/schemas/IChatterRequest'
+        - type: object
+          properties:
+            chatter:
+              $ref: '#/components/schemas/ChatterCreateObject'
+    ChatterReadRequest:
+      allOf:
+        - $ref: '#/components/schemas/IChatterRequest'
+        - type: object
+          properties:
+            chatter:
+              $ref: '#/components/schemas/ChatterReadObject'
+    ChatterUpdateRequest:
+      allOf:
+        - $ref: '#/components/schemas/IChatterRequest'
+        - type: object
+          properties:
+            chatter:
+              $ref: '#/components/schemas/ChatterUpdateObject'
+    ChatterDeleteRequest:
+      allOf:
+        - $ref: '#/components/schemas/IChatterRequest'
+        - type: object
+          properties:
+            chatter:
+              $ref: '#/components/schemas/ChatterDeleteObject'
+
+
+    ChatterCreateObject:
+      type: object
+      description: Создание и публикация сообщения (запрос)
+      properties:
+        message:
+          $ref: '#/components/schemas/ChatterContentMessage'
+    ChatterReadObject:
+      type: object
+      description: Чтение сообщения (запрос)
+      properties:
+        id:
+          $ref: '#/components/schemas/ChatterId'
+    ChatterUpdateObject:
+      type: object
+      description: Редактирование сообщения (запрос)
+      properties:
+        id:
+          $ref: '#/components/schemas/ChatterId'
+        message:
+          $ref: '#/components/schemas/ChatterContentMessage'
+    ChatterDeleteObject:
+      type: object
+      description: Удаление сообщения (запрос)
+      properties:
+        id:
+          $ref: '#/components/schemas/ChatterId'
+
+
+    ChatterCreateResponse:
+      allOf:
+        - $ref: '#/components/schemas/IChatterResponse'
+        - $ref: '#/components/schemas/ChatterResponseSingle'
+    ChatterReadResponse:
+      allOf:
+        - $ref: '#/components/schemas/IChatterResponse'
+        - $ref: '#/components/schemas/ChatterResponseSingle'
+    ChatterUpdateResponse:
+      allOf:
+        - $ref: '#/components/schemas/IChatterResponse'
+        - $ref: '#/components/schemas/ChatterResponseSingle'
+    ChatterDeleteResponse:
+      allOf:
+        - $ref: '#/components/schemas/IChatterResponse'
+
+    ChatterResponseSingle:
+      allOf:
+        - type: object
+          description: Сообщение (ответ)
+          properties:
+            chatter:
+              $ref: '#/components/schemas/BaseChatter'
+
+
+    ChatterId:
+      type: string
+      description: Идентификатор сообщения
+    ChatterContentMessage:
+      type: string
+      description: Сообщение
+    UserId:
+      type: string
+      description: Идентификатор пользователя
+    ModifyFlag:
+      type: boolean
+      description: Признак модифицирования сообщения
+    BaseChatter:
+      type: object
+      description: Объект-сообщение
+      properties:
+        id:
+          $ref: '#/components/schemas/ChatterId'
+        ownerId:
+          $ref: '#/components/schemas/UserId'
+        authorNickName:
+          type: string
+          maxLength: 255
+          description: Никнейм автора сообщения
+        message:
+          $ref: '#/components/schemas/ChatterContentMessage'
+        createdAt:
+          type: string
+          description: Дата и время формирования сообщения
+          format: date-time
+        isModified:
+          $ref: '#/components/schemas/ModifyFlag'
