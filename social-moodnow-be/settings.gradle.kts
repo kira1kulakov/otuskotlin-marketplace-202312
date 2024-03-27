@@ -1,4 +1,4 @@
-rootProject.name = "otuskotlin-marketplace-be"
+rootProject.name = "social-moodnow-be"
 
 dependencyResolutionManagement {
     versionCatalogs {
@@ -24,4 +24,4 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "0.5.0"
 }
 
-include(":otuskotlin-marketplace-tmp")
+include(":social-moodnow-tmp")
