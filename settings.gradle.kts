@@ -11,3 +11,4 @@ plugins {
 rootProject.name = "otuskotlin-marketplace-202312"
 
 includeBuild("social-moodnow-be")
+includeBuild("social-moodnow-libs")
