@@ -12,6 +12,7 @@ kotlin {
                 implementation(kotlin("stdlib-common"))
 
                 api(libs.kotlinx.datetime)
+                api("ru.otus.otuskotlin.social.moodnow.libs:social-moodnow-lib-logging-common")
             }
         }
         val commonTest by getting {
