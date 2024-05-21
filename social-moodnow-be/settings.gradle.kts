@@ -29,3 +29,4 @@ include(":social-moodnow-api-v2-kmp")
 include(":social-moodnow-api-v1-mappers")
 
 include(":social-moodnow-common")
+include(":social-moodnow-stubs")
