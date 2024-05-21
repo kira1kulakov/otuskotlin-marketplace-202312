@@ -30,3 +30,4 @@ include(":social-moodnow-api-v1-mappers")
 
 include(":social-moodnow-common")
 include(":social-moodnow-stubs")
+include(":social-moodnow-biz")
