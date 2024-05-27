@@ -9,6 +9,7 @@ import ru.otus.otuskotlin.social.moodnow.common.AppContext
 import ru.otus.otuskotlin.social.moodnow.common.enums.AppCommand
 import ru.otus.otuskotlin.social.moodnow.common.enums.State
 import ru.otus.otuskotlin.social.moodnow.common.models.*
+import ru.otus.otuskotlin.social.moodnow.logging.common.LogLevel
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -60,7 +61,8 @@ class MappersTest {
                     code = "error",
                     group = "response",
                     field = "id",
-                    message = "failure"
+                    message = "failure",
+                    level = LogLevel.ERROR
                 )
             )
         )

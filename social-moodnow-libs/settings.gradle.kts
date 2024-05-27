@@ -1,4 +1,4 @@
-rootProject.name = "social-moodnow-be"
+rootProject.name = "social-moodnow-libs"
 
 dependencyResolutionManagement {
     versionCatalogs {
@@ -24,12 +24,5 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "0.5.0"
 }
 
-include(":social-moodnow-api-v1-jackson")
-include(":social-moodnow-api-v2-kmp")
-include(":social-moodnow-api-v1-mappers")
-
-include(":social-moodnow-common")
-include(":social-moodnow-stubs")
-include(":social-moodnow-biz")
-include(":social-moodnow-app-spring")
-include(":social-moodnow-app-common")
+include(":social-moodnow-lib-logging-common")
+include(":social-moodnow-lib-logging-logback")

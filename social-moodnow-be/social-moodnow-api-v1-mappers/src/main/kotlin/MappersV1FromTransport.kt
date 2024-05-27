@@ -29,7 +29,7 @@ private fun ChatterCreateObject?.toInternal(): ModelChatter = ModelChatter(
 )
 
 fun AppContext.fromTransport(request: ChatterReadRequest) {
-    command = AppCommand.CREATE
+    command = AppCommand.READ
     chatterRequest = request.chatter.toInternal()
 
 }
@@ -40,7 +40,7 @@ private fun ChatterReadObject?.toInternal(): ModelChatter = ModelChatter(
 
 
 fun AppContext.fromTransport(request: ChatterUpdateRequest) {
-    command = AppCommand.CREATE
+    command = AppCommand.UPDATE
     chatterRequest = request.chatter.toInternal()
 
 }
@@ -51,7 +51,7 @@ private fun ChatterUpdateObject?.toInternal(): ModelChatter = ModelChatter(
 )
 
 fun AppContext.fromTransport(request: ChatterDeleteRequest) {
-    command = AppCommand.CREATE
+    command = AppCommand.DELETE
     chatterRequest = request.chatter.toInternal()
 
 }
