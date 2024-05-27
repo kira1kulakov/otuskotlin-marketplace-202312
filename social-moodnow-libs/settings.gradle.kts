@@ -26,3 +26,4 @@ plugins {
 
 include(":social-moodnow-lib-logging-common")
 include(":social-moodnow-lib-logging-logback")
+include(":social-moodnow-lib-cor")
