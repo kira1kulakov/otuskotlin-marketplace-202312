@@ -5,8 +5,10 @@ import kotlinx.datetime.Instant
 
 data class ModelBaseChatter(
     val id: ModelChatterId = ModelChatterId.NONE,
-    val ownerId: ModelUserId = ModelUserId.NONE,
-    val authorNickName: String = "",
-    val message: ModelChatterContentMessage = ModelChatterContentMessage.NONE,
-    val createdAt: Instant = Clock.System.now()
-)
+    var ownerId: ModelUserId = ModelUserId.NONE,
+    var authorNickName: String = "",
+    var message: ModelChatterContentMessage = ModelChatterContentMessage.NONE,
+    var createdAt: Instant? = null
+) {
+    fun deepCopy(): ModelBaseChatter = copy()
+}

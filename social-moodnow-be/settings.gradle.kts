@@ -24,6 +24,8 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "0.5.0"
 }
 
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 include(":social-moodnow-api-v1-jackson")
 include(":social-moodnow-api-v2-kmp")
 include(":social-moodnow-api-v1-mappers")
@@ -33,3 +35,8 @@ include(":social-moodnow-stubs")
 include(":social-moodnow-biz")
 include(":social-moodnow-app-spring")
 include(":social-moodnow-app-common")
+
+include(":social-moodnow-repo-common")
+include(":social-moodnow-repo-inmemory")
+include(":social-moodnow-repo-tests")
+include(":social-moodnow-repo-stubs")

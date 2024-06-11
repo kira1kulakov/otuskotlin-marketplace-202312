@@ -4,35 +4,25 @@ plugins {
 
 kotlin {
     sourceSets {
-        all { languageSettings.optIn("kotlin.RequiresOptIn") }
-
-        commonMain {
+        val commonMain by getting {
             dependencies {
-                implementation(kotlin("stdlib-common"))
-
-                implementation(libs.cor)
-
                 implementation(project(":social-moodnow-common"))
-                implementation(project(":social-moodnow-stubs"))
+
+                implementation(libs.coroutines.core)
             }
         }
-        commonTest {
+        val commonTest by getting {
             dependencies {
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
-
-                api(libs.coroutines.test)
-
-                implementation(project(":social-moodnow-repo-inmemory"))
-                implementation(project(":social-moodnow-repo-tests"))
             }
         }
-        jvmMain {
+        val jvmMain by getting {
             dependencies {
                 implementation(kotlin("stdlib-jdk8"))
             }
         }
-        jvmTest {
+        val jvmTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
             }
