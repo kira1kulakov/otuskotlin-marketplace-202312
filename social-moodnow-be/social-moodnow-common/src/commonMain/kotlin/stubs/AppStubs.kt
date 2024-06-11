@@ -11,4 +11,5 @@ enum class AppStubs {
     CANNOT_DELETE,
     BAD_SEARCH_STRING,
     DB_ERROR,
+    BAD_MESSAGE,
 }

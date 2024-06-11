@@ -7,6 +7,8 @@ import ru.otus.otuskotlin.social.moodnow.common.models.ModelBaseChatter
 import ru.otus.otuskotlin.social.moodnow.common.models.ModelChatter
 import ru.otus.otuskotlin.social.moodnow.common.models.ModelChatterId
 import ru.otus.otuskotlin.social.moodnow.common.models.ModelError
+import ru.otus.otuskotlin.social.moodnow.common.stubs.AppStubs
+import ru.otus.otuskotlin.social.moodnow.common.enums.AppWorkMode
 
 data class AppContext(
     var command: AppCommand = AppCommand.NONE,
@@ -22,4 +24,10 @@ data class AppContext(
     var timeStart: Instant = Instant.NONE,
 
     val errors: MutableList<ModelError> = mutableListOf(),
+
+    var corSettings: AppCorSettings = AppCorSettings(),
+
+    var stubCase: AppStubs = AppStubs.NONE,
+
+    var workMode: AppWorkMode = AppWorkMode.PROD,
 )
