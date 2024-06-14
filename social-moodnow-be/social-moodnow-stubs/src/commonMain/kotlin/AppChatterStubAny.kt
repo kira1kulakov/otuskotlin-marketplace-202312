@@ -16,8 +16,8 @@ object AppChatterStubAny {
     val CHATTER_BASE_ANY: ModelBaseChatter
         get() = ModelBaseChatter(
             id = ModelChatterId(ANY_ID),
-            ownerId = ModelUserId("1"),
-            authorNickName = "Tony Stark",
+            ownerId = ModelUserId.NONE,
+            authorNickName = "",
             message = ModelChatterContentMessage(ANY_MESSAGE)
         )
 

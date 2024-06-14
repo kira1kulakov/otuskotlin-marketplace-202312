@@ -31,10 +31,16 @@ dependencies {
 
     implementation(project(":social-moodnow-biz"))
 
-    // tests
+    implementation(projects.socialMoodnowRepoCommon)
+    implementation(projects.socialMoodnowRepoStubs)
+    implementation(projects.socialMoodnowRepoInmemory)
+    testImplementation(projects.socialMoodnowRepoCommon)
+    testImplementation(projects.socialMoodnowStubs)
+
     testImplementation(kotlin("test-junit5"))
     testImplementation(libs.spring.test)
     testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.spring.mockk)
 }
 
 tasks {

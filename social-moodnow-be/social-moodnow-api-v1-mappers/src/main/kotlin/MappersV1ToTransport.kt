@@ -39,7 +39,7 @@ fun AppContext.toTransportDelete() = ChatterDeleteResponse(
     errors = errors.toTransportErrors()
 )
 
-private fun ModelBaseChatter.toTransportChatter() = BaseChatter(
+internal fun ModelBaseChatter.toTransportChatter() = BaseChatter(
     id = id.asString(),
     ownerId = ownerId.asString(),
     authorNickName = authorNickName,
@@ -47,19 +47,19 @@ private fun ModelBaseChatter.toTransportChatter() = BaseChatter(
     createdAt = createdAt.toString()
 )
 
-private fun List<ModelError>.toTransportErrors(): List<Error>? = this
+internal fun List<ModelError>.toTransportErrors(): List<Error>? = this
     .map { it.toTransportAd() }
     .toList()
     .takeIf { it.isNotEmpty() }
 
-private fun ModelError.toTransportAd() = Error(
+internal fun ModelError.toTransportAd() = Error(
     code = code.takeIf { it.isNotBlank() },
     group = group.takeIf { it.isNotBlank() },
     field = field.takeIf { it.isNotBlank() },
     message = message.takeIf { it.isNotBlank() },
 )
 
-private fun State.toResult(): ResponseResult? = when (this) {
+internal fun State.toResult(): ResponseResult? = when (this) {
     State.PROCESSING -> ResponseResult.SUCCESS
     State.FAILING -> ResponseResult.ERROR
     State.FINISHING -> ResponseResult.SUCCESS
