@@ -39,6 +39,7 @@ coroutines-reactor = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-reacto
 coroutines-reactive = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-reactive", version.ref = "coroutines" }
 
 cor = { module = "ru.otus.otuskotlin.social.moodnow.libs:social-moodnow-lib-cor" }
+uuid = "com.benasher44:uuid:0.8.4"
 
 jackson-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson" }
 jackson-datatype = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310", version.ref = "jackson" }
@@ -56,9 +57,13 @@ spring-actuator = { module = "org.springframework.boot:spring-boot-starter-actua
 spring-webflux = { module = "org.springframework.boot:spring-boot-starter-webflux" }
 spring-webflux-ui = { module = "org.springdoc:springdoc-openapi-starter-webflux-ui", version = "2.3.0" }
 spring-test = { module = "org.springframework.boot:spring-boot-starter-test" }
+spring-mockk = "com.ninja-squad:springmockk:4.0.2"
 
 # Message Queues
 rabbitmq-client = { module = "com.rabbitmq:amqp-client", version = "5.20.0" }
+
+# Databases
+db-cache4k = "io.github.reactivecircus.cache4k:cache4k:0.13.0"
 
 # Testing
 kotest-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }

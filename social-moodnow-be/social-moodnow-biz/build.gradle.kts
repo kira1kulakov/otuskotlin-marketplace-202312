@@ -22,6 +22,9 @@ kotlin {
                 implementation(kotlin("test-annotations-common"))
 
                 api(libs.coroutines.test)
+
+                implementation(project(":social-moodnow-repo-inmemory"))
+                implementation(project(":social-moodnow-repo-tests"))
             }
         }
         jvmMain {

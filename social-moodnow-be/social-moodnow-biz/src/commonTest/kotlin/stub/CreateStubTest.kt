@@ -17,8 +17,8 @@ class CreateStubTest {
     private val id = "00000000-0000-0000-0000-000000000000"
     private val message = "Default text of message"
 
-    private val ownerId = "1"
-    private val nickName = "Tony Stark"
+    private val ownerId = ""
+    private val nickName = ""
 
     @Test
     fun create() = runTest {

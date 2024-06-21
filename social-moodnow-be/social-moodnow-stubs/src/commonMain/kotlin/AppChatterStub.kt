@@ -9,4 +9,6 @@ object AppChatterStub {
     fun getAnyRequest(): ModelChatter = CHATTER_ANY_REQUEST_COPY.copy()
 
     fun getAnyResponse(): ModelBaseChatter = CHATTER_ANY_RESPONSE_COPY.copy()
+
+    fun prepareResult(block: ModelBaseChatter.() -> Unit): ModelBaseChatter = getAnyResponse().apply(block)
 }
